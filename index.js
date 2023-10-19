@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 // require('dotenv').config();
 
-// const authRoute = require('./routes/auth');
+const authRoute = require('./routes/auth.users');
 // const userRoute = require('./routes/users');
 // const brandRoute = require('./routes/brand');
 // const productRoute = require('./routes/product');
@@ -26,13 +26,13 @@ app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect('mongodb://localhost:27017/ecommerceapp')
     .then(res => {
-        console.log("Connected to DB Sucessfully");
+        console.log("Connected to DB Sucessfully ");
     }).catch(err => {
         console.log(err);
     })
 // k5k3CCSIrzI3p0dc
 
-// app.use('/api/users', authRoute);
+app.use('/api/users', authRoute);
 // app.use('/api/users', userRoute);
 // app.use('/api/brands', brandRoute);
 // app.use('/api/products', productRoute);
