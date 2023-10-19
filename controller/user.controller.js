@@ -3,9 +3,13 @@ const { validationResult } = require('express-validator');
 
 
 exports.signup = async (req,res)=>{
+        
 
+    
 
     const errors = validationResult(req);
+
+    // check is empty
     if (!errors.isEmpty()) {
         return res.status(422).json({
             error: errors.array()[0].msg,
