@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-// require('dotenv').config();
+require('dotenv').config();
 
 const authRoute = require('./routes/auth.users');
 // const userRoute = require('./routes/users');
@@ -12,7 +12,7 @@ const authRoute = require('./routes/auth.users');
 // const esewaRoute = require('./routes/esewa');
 
 const app = express()
-// var cors = require('cors');
+var cors = require('cors');
 
 const hostname = '127.0.0.1';
 const port = 5000;
@@ -21,8 +21,9 @@ const port = 5000;
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
-// app.use(cors());
-// app.options('*', cors());
+app.use(cors());
+// accepting request from any port *
+app.options('*', cors());
 
 mongoose.connect('mongodb://localhost:27017/ecommerceapp')
     .then(res => {

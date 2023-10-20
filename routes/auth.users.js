@@ -1,5 +1,5 @@
 const express = require('express');
-const { signup } = require('../controller/user.controller');
+const { signup, signin } = require('../controller/user.controller');
 const { check } = require('express-validator');
 const router = express.Router()
 
@@ -13,6 +13,16 @@ router.post('/signup',[
         min: 6,
     })
 ],signup)
+
+
+
+router.post('/signin',[
+    
+    check('email', 'email is required').isEmail(),
+    check('password', 'Password should be at least 6 character').isLength({
+        min: 6,
+    })
+],signin)
 
 
 module.exports = router
