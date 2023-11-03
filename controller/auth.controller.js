@@ -95,3 +95,23 @@ secret:process.env.SECRET,
 algorithms:["HS256"],
 requestProperty:'auth'
 })
+
+exports.isAuthenticated= (req,res,next)=>{
+    let checker = req.auth && req.user && req.auth._id === req.user.id
+    if(!checker){
+        return res.status(403).json({
+            error: 'Authenticate access denied'
+        });
+    }
+    next()
+}
+
+exports.isAdmin = (req, res, next) => {
+    if (req.user.role === 1) {
+        next();
+    } else {
+        return res.status(403).json({
+            error: 'Admin Access Denied',
+        });
+    }
+};

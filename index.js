@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const authRoute = require('./routes/auth.users');
-// const userRoute = require('./routes/users');
+const userRoute = require('./routes/users');
 // const brandRoute = require('./routes/brand');
 // const productRoute = require('./routes/product');
 // const uploadFileRoute = require('./routes/upload-file');
@@ -34,7 +34,7 @@ mongoose.connect('mongodb://localhost:27017/ecommerceapp')
 // k5k3CCSIrzI3p0dc
 
 app.use('/api/users', authRoute);
-// app.use('/api/users', userRoute);
+app.use('/api/users', userRoute);
 // app.use('/api/brands', brandRoute);
 // app.use('/api/products', productRoute);
 // app.use('/api/upload-files', uploadFileRoute);

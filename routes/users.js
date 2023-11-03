@@ -7,3 +7,6 @@ var router = express.Router();
 
 router.use('userId',getUserById);
 router.get('/:userid',isSignedIn,getUser);
+
+
+module.exports= router;
