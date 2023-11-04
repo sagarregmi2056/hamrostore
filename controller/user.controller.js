@@ -16,7 +16,7 @@ exports.getUserById = async (req,res,next,id)=>{
     }
 }
 
-exports.getUser= async (req,res)=>{
+exports.getUser=  (req,res)=>{
     req.user.hash_password = undefined;
     return res.json(req.user);
 }

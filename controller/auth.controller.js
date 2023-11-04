@@ -1,5 +1,5 @@
 const User = require('../models/users')
-const { validationResult, ExpressValidator } = require('express-validator');
+const { validationResult } = require('express-validator');
 
 require('dotenv').config();
 
@@ -10,9 +10,6 @@ const {expressjwt}= require('express-jwt')
 
 
 exports.signup = async (req,res)=>{
-        
-
-    
 
     const errors = validationResult(req);
 
@@ -36,9 +33,6 @@ exports.signup = async (req,res)=>{
 
 exports.signin = async (req,res)=>{
         
-
-    
-
     const errors = validationResult(req);
 
     // check is empty
