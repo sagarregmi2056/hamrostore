@@ -20,3 +20,11 @@ exports.getUser=  (req,res)=>{
     req.user.hash_password = undefined;
     return res.json(req.user);
 }
+exports.getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find()
+        res.json(users)
+    } catch (err) {
+        return res.status(400).json({ error: err?.message || 'No User found' });
+    }
+}
