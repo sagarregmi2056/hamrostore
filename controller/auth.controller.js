@@ -97,7 +97,7 @@ requestProperty:'auth'
 })
 
 exports.isAuthenticated= (req,res,next)=>{
-    let checker = req.auth && req.user && req.auth._id === req.user.id
+    let checker = req.auth && req.user && req.auth._id ==req.user.id
     if(!checker){
         return res.status(403).json({
             error: 'Authenticate access denied'

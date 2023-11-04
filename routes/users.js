@@ -5,8 +5,8 @@ const { isSignedIn, isAuthenticated } = require('../controller/auth.controller')
 
 var router = express.Router();
 
-router.use('userId',getUserById);
-router.get('/:userid',isAuthenticated,isSignedIn,getUser);
+router.param('userId',getUserById);
+router.get('/:userid',isSignedIn,isAuthenticated,getUser);
 
 
 module.exports= router;
