@@ -84,17 +84,17 @@ exports.signin = async (req,res)=>{
     }
 }
 
-exports.isSignedIn= expressjwt({
-secret:process.env.SECRET,
-algorithms:["HS256"],
-requestProperty:'auth'
-})
+exports.isSignedIn = expressjwt({
+    secret: process.env.SECRET,
+    requestProperty: 'auth',
+    algorithms: ["HS256"]
+});
 
-exports.isAuthenticated= (req,res,next)=>{
-    let checker = req.auth && req.user && req.auth._id ==req.user.id
-    if(!checker){
+exports.isAuthenticated = (req, res, next) => {
+    let checker = req.auth && req.user && req.auth._id == req.user._id
+    if (!checker) {
         return res.status(403).json({
-            error: 'Authenticate access denied'
+            error: 'Authenticated Access Denied',
         });
     }
     next()
